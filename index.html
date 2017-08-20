@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shazam</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <div id="header">
+            <img id="logo" src="Images/shazam_logo.png" width=50%>
+            <ul id="menu">
+                <li id="nav"><a href="index.html">How it works</a></li>
+                <li id="nav"><a href="competitors.html">Competitors</a></li>
+            </ul>
+            <ul id="menu">
+                <li id="items"><a href="#home">Home</a></li>
+                <li id="items"><a href="#about">About</a></li>
+                <li id="items"><a href="#overview">Overview</a></li>
+                <li id="items"><a href="#dig_audio">Digitized Audio</a></li>
+                <li id="items"><a href="#fprinting">Audio Fingerprinting</a></li>
+                <li id="items"><a href="#shazam">At Work</a></li>
+            </ul>
+        </div>
+        <img id="banner"src="Images/shazam.jpeg">
+        <h4 style="color:#33A8FF;"><span id="home"></span>Home</h4>
+        
+        <div id="content">
+            <div id="main">
+                <p><h2><span id="about"></span>About Shazam</h2></p>
+                <p>
+Shazam is a software development company that offers a smartphone and computer applications that can identify music, movies, television, and advertising promos just from a thirty second sound sample. In order to do so, Shazam accesses the device's built-in microphone, thereby capturing the sound emitted via radio, speaker, etc., and uses this "acoustic fingerprint" to compare against the fingerprints stored in its main database. <br>
+                </br>If a match is found, the information regarding the audio clip (i.e. name, singer, and album) are relayed to the user, along with links to music streaming applications such as YouTube or Spotify, lyrics to the song, and music recommendations. If a match is not found, this is likely because of background noise levels that disturbs the overall sound quality and distorts the sound being produced, or because the song is not in Shazam's database. 
+                </p>
+            </div>
+            <br></br>
+        <div align="center">
+            <br><h2 style="color:white;"><span id="overview"></span>Overview</h2>
+            <iframe width="700" height="415" src="https://www.youtube.com/embed/K0_TP5Sf7yc" frameborder="0" allowfullscreen></iframe>  <br></br><br></br>              
+        </div>
+
+        <div id="main">
+            <p><h2><span id="dig_audio"></span>Digitized Audio</h2></p>
+            <p>
+Making sense of how Shazam works requires an in-depth look into the process of digitizing analog sound and understanding how it's represented. <br></br>
+            <div><h3 align="middle">Physics of Sound</h3>
+                <div>
+                    <img src="Images/pure_tone.gif" style="float:left;">
+                    <img src="Images/sound_wave.png" style="float:right;">
+                <p>A pure tone can be represented as the a sinusoidal wave, as displayed on the left. A sinusoidal wave essentially has two properties: its amplitude and period. Its amplitude is the length from the x-axis to the maximum of the wave (2x10^-2 N/m^2), and its period is the length from one maximum to the next (4ms). From the period, we can calculate the frequency of the wave, which is the reciprocal of the period (250 Hz).<br>
+                </br> However, this applies only to a pure tone. Most sound is a combination of sound waves, and looks more like the graph on the right. Here you can see that the sound wave (or, if you prefer to think of it so, music itself) consists of multiple overlapping waves with different frequencies. However, this is the analog representation of any sound (and by analog, I mean a continuous and non-digital). Storage restrictions require that we store only a fraction of the constituent numbers of a sound wave, and this is where sampling comes in.</p>
+                </div>
+            </div>
+            </p>
+
+            <div> <h3 align="middle">Sampling</h3>
+                <div>
+                    <img src="Images/good_sampling.png" width=35% style="float:left;">
+                    <img src="Images/under_sampling.png" width=35% style="float:right;">
+                <p>Sampling is the process of measuring the quantity we're interested in - in this case, sound - at evenly spaced intervals. Now we don't want to over-sample, because that means we'll end up storing more information than necessary to determine the properties of the wave. At the same time, we don't want to under-sample, because we'll end up with a distorted version of the original wave. We know that humans can hear sounds between frequencies of 20Hz and 20kHz. According to the Nyquist-Shannon Theorem, to digitize frequencies between 0Hz and 20kHz, you need at least 40,000 samples per second. This is so that we can identify at least 2 points per cycle. In other words, if you identify two points per cycle of a sound wave, you will be able to effectively reconstruct a good approximation of the wave. On the left is an example of good sampling, and on the right is an example of under-sampling.You can see that when less than two points per cycle are denoted (on the right), the wave reconstructed from these points is glaringly incorrect. The data collected from sampling is what we store as the digitized version of our analog sound waves. <br>
+                <img src="Images/quantization.png" width=30% style="float:right;"></br>
+                <h3 align="middle">Quantization</h3>
+                Loudness is digitized using a process called quantization. We are faced again with the same issue - how do we effectively store enough of the loudness that the audio is identical to the original audio, while also minimizing the storage space? On the right is an example of 8 level quantization (also known as 3 bits quantization, because only 3 bits are required to represent 8 levels. Typically, 16 bit quanitization is used simply because our ears are not incredibly sensitive to require more (like 24 or 64 bit).
+                </p>
+                <img src="Images/pcm.png" width=35% style="float:right;">
+                <h3 align="middle">Pulse Coded Modulation</h3>
+                Pulse Coded Modulation, also called PCM, is the widely used and accepted format for storing digitized audio. As we established earlier, the sampling rate is around 40K samples per second. One sample itself takes 4 bytes, 2 for each speaker (left and right)
+                <h3 align="middle">Fourier Transform</h3>
+                To convert from digital sound to frequencies (which is essential because Shazam deals in frequencies), we need to perform a Fourier transform. The Fourier Transform converts a continuous function of time to a function of frequencies. Since our digital representation is non-continuous, we instead apply the Fourier Transform onto chunks of the signal and derive our function of frequncies from that.
+                </div>
+            </div>
+
+        </div>
+
+        <div align="center">
+            <br><h2 style="color:white;"><span id="fprinting"></span>Audio Fingerprinting</h2>
+            <iframe width="700" height="415" src="https://www.youtube.com/embed/h8fYOd3Dzac" frameborder="0" allowfullscreen></iframe>  <br></br><br></br>              
+        </div>
+
+        <div id="main">
+            <p><h2 align="middle"><span id="shazam"></span>At Work</h2></p>
+                <p> 
+                <img src="Images/spectrogram.jpg" width=25% style="float:left;">
+                Audio fingerprinting is what Shazam uses to identify music. Shazam runs its fingerprinting algorithm on the music its being fed through the speaker and then compares it to the fingerprints of songs in its database. Matches need to be made accurately as well as quickly (you don't see the app stalling for hours as it plods through hundreds of millions of songs, do you?). The fingerprinting algorithm converts the frequencies outputted by the Fourier Transform to a spectrogram that is then used as the basis for comparison. <br>
+                The spectrogram is filtered so that only the strongest frequencies (essentially the loudest sounds) are used as identifiers for the track. So when Shazam collects this 10-second fingerprint, it scans through the n-second fingerprint of another song to look for matches - but it doesn't compare at every second. Instead it looks at target zones. If there's a match between the target zone and the fingerprint, the user is notified of the app's success. Unfortunately Shazam hasn't made public the key parts that make the algorithm so efficient (how the target4 zones are created), so that part remains uncertain. 
+                </p>
+        </div>
+
+    </div>
+    </body>
+</html>
